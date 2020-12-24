@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import ThemeContext from "./context/ThemeContext";
 
 export default function Pokemon() {
   const [pokemon, setChar] = useState([]);
+  const color = useContext(ThemeContext);
 
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon/")
@@ -12,7 +14,7 @@ export default function Pokemon() {
   return (
     <div>
       {pokemon.map(char => (
-        <h2>{char.name}</h2>
+        <h2 style={{ color }}>{char.name}</h2>
       ))}
     </div>
   );
